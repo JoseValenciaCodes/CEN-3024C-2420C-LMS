@@ -10,7 +10,6 @@ public class OptionsMenu
     // Allows the user to enter input through the CLI
     private Scanner scanner;
     private int userChoice;
-
     private LMS lms;
 
     public OptionsMenu()
@@ -43,12 +42,8 @@ public class OptionsMenu
         System.out.println(AnsiColorCodes.RED_COLOR + "\t\t8: EXIT" + AnsiColorCodes.DEFAULT_COLOR);
     }
 
-    // Option to get list of all registered patrons
-    private void getRegisteredPatronsDetailsOptions()
+    private void displayAllPatrons()
     {
-        System.out.println("\n\nYou've chosen to get a list of all registered patrons");
-        System.out.println("\nRegistered Patrons List: ");
-
         // Get list of Registered patrons from LMS
         List<Patron> registeredPatrons = this.lms.getAllRegisteredPatrons();
 
@@ -64,9 +59,17 @@ public class OptionsMenu
                 System.out.println(AnsiColorCodes.BLUE_COLOR + "," + AnsiColorCodes.DEFAULT_COLOR);
             }
         }
+    }
 
-        System.out.println(AnsiColorCodes.BLUE_COLOR + "]" + AnsiColorCodes.DEFAULT_COLOR);
 
+    // Option to get list of all registered patrons
+    private void getRegisteredPatronsDetailsOptions()
+    {
+        System.out.println("\n\nYou've chosen to get a list of all registered patrons");
+        System.out.println("\nRegistered Patrons List: ");
+
+        // Get list of Registered patrons from LMS
+        displayAllPatrons();
     }
 
     // Menu option to get patron details by its id
@@ -98,6 +101,9 @@ public class OptionsMenu
 
         String importedPatronsFeedback = this.lms.addImportedPatrons(fileName);
         System.out.println(importedPatronsFeedback);
+        displayAllPatrons();
+
+
     }
 
     // Menu option to export patrons to external file
@@ -108,6 +114,7 @@ public class OptionsMenu
 
         String exportedPatronsFeedback = this.lms.exportCurrentPatronsList(fileName);
         System.out.println(exportedPatronsFeedback);
+        displayAllPatrons();
     }
 
     // Menu option to add patron the system directly
@@ -122,6 +129,7 @@ public class OptionsMenu
 
         String addedPatronFeedback = this.lms.addPatron(newPatronId, newPatronName, newPatronAddress, newPatronsOverdueFine);
         System.out.println(addedPatronFeedback);
+        displayAllPatrons();
     }
 
     // Menu option to update patron by ID
@@ -136,6 +144,7 @@ public class OptionsMenu
 
         String updatedPatronFeedback = this.lms.updatePatronById(patronToUpdateId, updatedPatronName, updatedPatronAddress, updatedOverdueFine);
         System.out.println(updatedPatronFeedback);
+        displayAllPatrons();
     }
 
     // Menu option to delete patron by ID
@@ -146,6 +155,7 @@ public class OptionsMenu
 
         String deletedPatronFeedback = this.lms.deletePatronById(patronToDeleteId);
         System.out.println(deletedPatronFeedback);
+        displayAllPatrons();
     }
 
     // Refactor the code for asking the user for a detail about the patron
