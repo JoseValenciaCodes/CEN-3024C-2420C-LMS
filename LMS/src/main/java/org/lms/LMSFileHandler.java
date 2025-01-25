@@ -16,7 +16,7 @@ public class LMSFileHandler
         // Initialize the patrons list
         List<Patron> patrons = new ArrayList<Patron>();
 
-        // Debugg FileNotFound Error - File was in wrong directory
+        // Debug FileNotFound Error - File was in wrong directory
         //System.out.println("Current Working Directory: " + System.getProperty("user.dir"));
 
         // Read the file line-by-line
