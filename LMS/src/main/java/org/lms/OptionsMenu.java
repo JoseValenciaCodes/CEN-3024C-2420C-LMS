@@ -59,6 +59,8 @@ public class OptionsMenu
                 System.out.println(AnsiColorCodes.BLUE_COLOR + "," + AnsiColorCodes.DEFAULT_COLOR);
             }
         }
+
+        System.out.println(AnsiColorCodes.BLUE_COLOR + "]\n" + AnsiColorCodes.DEFAULT_COLOR);
     }
 
 
